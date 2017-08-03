@@ -11,6 +11,10 @@ value = bridgeclient()
 #build up mqtt
 mqttc=mqtt.Client()
 mqttc.connect("172.16.2.143",8883,60)
+#mqtt set username password
+mqttc.username_pw_set("OTADevice", "ubiqconndevicelogin")
+#mqtt set crt
+mqttc.tls_set('/root/ca.crt')
 mqttc.loop_start()
 def reading():
     h0 = value.get("h")
